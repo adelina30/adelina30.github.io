@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='styles.css')}}" />
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+  <title>Document</title>
+</head>
+
+<body>
+  <header>
+    <div class="logo">
+      <img height="80" width="auto"
+        src="data:image/jpeg;base64,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">
+    </div>
+    <div class="title">
+      <h2>Top Films</h2>
+    </div>
+
+  </header>
+
+  <section>
+    <nav id="left">
+      <div id="sort">
+        <div class="form-check">
+          <input name="filter" class="form-check-input" type="radio" value="popularity" id="popularity">
+          <label class="form-check-label" for="popularity">
+            popularity
+          </label>
+        </div>
+        <div class="form-check">
+          <input name="filter" class="form-check-input" type="radio" value="year1" id="year1">
+          <label class="form-check-label" for="year1">
+            year (oldest)
+          </label>
+        </div>
+        <div class="form-check">
+          <input name="filter" class="form-check-input" type="radio" value="year2" id="year2">
+          <label class="form-check-label" for="year2">
+            year (new)
+          </label>
+        </div>
+      </div>
+    </nav>
+
+
+
+
+
+
+
+
+    <div>
+      <div class="my-content">
+        <div class="card" style="width: 18rem;" data-year="2022" data-popularity="7">
+          <img height="400" width="auto"
+            src="https://kinokrad.us/uploads/posts/2022-07/1657027235-minony-gryuvitaciya.jpg" class="card-img-top"
+            alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Minion</h5>
+            <p class="card-text">Minions: The Rise of Gru is a 2022 American computer-animated comedy film produced by
+              Illumination and distributed by Universal Pictures. It is the sequel to the spin-off prequel Minions
+              (2015) and the fifth entry overall in the Despicable Me franchise.</p>
+            <a href="https://kinokrad.us/fulms_usa/11983-minony-gryuvitaciya-minions-the-rise-of-gru-2022.html"
+              class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+
+        <div class="card" style="width: 18rem;" data-year="2020" data-popularity="4">
+          <img height="400" width="auto" src="https://kinokrad.us/uploads/posts/2019-07/1563643043-korol-lev.jpg"
+            class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">the lion king</h5>
+            <p class="card-text">Disney's The Lion King is about a young lion named Simba, who is the crown prince of an
+              African Savanna. When his father dies in an accident staged by his uncle, Simba is made to feel
+              responsible for his father's death and must overcome his fear of </p>
+            <a href="https://kinokrad.us/fulms_usa/6993-korol-lev-the-lion-king-2019.html" class="btn btn-primary">Go
+              somewhere</a>
+          </div>
+        </div>
+
+        <div class="card" style="width: 18rem;" data-year="2017" data-popularity="9">
+          <img height="400" width="auto" src="https://kinokrad.us/uploads/posts/2021-05/1620315608-tayna-koko.jpg"
+            class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Luca</h5>
+            <p class="card-text">Coco is a 2017 American 3D computer-animated musical fantasy drama film produced by
+              Pixar Animation Studios and released by Walt Disney Pictures. Based on an original idea by Lee Unkrich, it
+              is directed by him and co-directed by Adrian Molina.</p>
+            <a href="https://kinokrad.us/movie/506-tayna-koko.html" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+
+
+        <div class="card" style="width: 18rem;" data-year="2021" data-popularity="6">
+          <img height="400" width="auto"
+            src="https://kinokrad.us/uploads/posts/2022-07/1658147658-kung-fu-panda-rycar-drakona.jpg"
+            class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">kung fu Panada</h5>
+            <p class="card-text"> It's the story about a lazy, irreverent slacker panda, named Po, who is the biggest
+              fan of Kung Fu around...which doesn't exactly come in handy while working every day in his family's noodle
+              shop. Unexpectedly chosen to fulfill an ancient </p>
+            <a href="https://kinokrad.us/fulms_usa/12085-kung-fu-panda-rycar-drakona-kung-fu-panda-the-dragon-knight-2022.html"
+              class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+
+        <div class="card" style="width: 18rem;" data-year="2021" data-popularity="7">
+          <img height="400" width="auto"
+            src="https://kinokrad.us/uploads/posts/2022-07/1657646931-moya-geroyskaya-akademiya-film-3-missiya-mirovyh-geroev.jpg"
+            class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">My hero Academia</h5>
+            <p class="card-text">A superhero-loving boy without any powers is determined to enroll in a prestigious hero
+              academy and learn what it really means to be a hero. In a world populated with superhumans, the
+              superhero-loving Izuku Midoriya is without power. </p>
+            <a href="https://kinokrad.us/anime/12038-moya-geroyskaya-akademiya-film-3-missiya-mirovyh-geroev-boku-no-hero-academia-the-movie-3-world-heroes-mission-2021.html"
+              class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+
+        <div class="card" style="width: 18rem;" data-year="2018" data-popularity="5">
+          <img height="400" width="auto"
+            src="https://kinokrad.us/uploads/posts/2021-08/1630090484-masha-i-medved-novogodnyaya-pesenka.jpg"
+            class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Masha and bear</h5>
+            <p class="card-text">Masha is an exceedingly active little girl who can't sit still on one place and has to
+              make everything a business of her own. The Bear is a big and hearty guy who loves comfort and quietness.
+              After their first met the Bear is always in anticipation for another fun and wild adventure that Masha
+              will surely pull him in.</p>
+            <a href="https://kinokrad.us/detskiy/10051-masha-i-medved-novogodnyaya-pesenka-2018.html"
+              class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+
+        <div class="card" style="width: 18rem;" data-year="2016" data-popularity="1">
+          <img height="400" width="auto"
+            src="https://kinokrad.us/uploads/posts/2020-07/1595484139-ochen-strannye-dela.jpg" class="card-img-top"
+            alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Stranger things</h5>
+            <p class="card-text">
+              Set in the 1980s, primarily in the fictional town of Hawkins, Indiana, Stranger Things centers on a number
+              of mysteries and supernatural events occurring around the town and their impact on an ensemble of child
+              and adult characters.</p>
+            <a href="https://kinokrad.us/serialy/7675-ochen-strannye-dela-stranger-things-2016.html"
+              class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+
+        <div class="card" style="width: 18rem;" data-year="2020" data-popularity="10">
+          <img height="400" width="auto" src="https://kinokrad.us/uploads/posts/2019-02/1550928938_poster-505898.jpg"
+            class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Avatar</h5>
+            <p class="card-text">A paraplegic Marine dispatched to the moon Pandora on a unique mission becomes torn
+              between following his orders and protecting the world he feels is his home. When his brother is killed in
+              a robbery, paraplegic Marine Jake Sully decides to take his place in a mission on the distant world of
+              Pandora.</p>
+            <a href="https://kinokrad.us/trailer/6611-avatar2.html" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+
+
+
+        <div class="card" style="width: 18rem;" data-year="2021" data-popularity="6">
+          <img height="400" width="auto" src="https://kinokrad.us/uploads/posts/2021-12/1639318448-doroga-domoy.jpg"
+            class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">The outback</h5>
+            <p class="card-text">A motley crew of Australia's deadliest creatures are tired of being locked away in a
+              reptilian house where humans stare at them like monsters.</p>
+            <a href="https://kinokrad.us/fulms_usa/10763-doroga-domoy-back-to-the-outback-2021.html"
+              class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+
+        <div class="card" style="width: 18rem;" data-year="2021" data-popularity="3">
+          <img height="400" width="auto" src="https://kinokrad.us/uploads/posts/2021-04/1618589519-drakon-zhelaniy.jpg"
+            class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">The wish dragon</h5>
+            <p class="card-text">Determined teen Din is longing to reconnect with his childhood best friend when he
+              meets a wish-granting dragon who shows him the magic of possibilities. Determined teen Din is longing to
+              reconnect with his childhood best friend when he meets a wish-granting dragon who shows him the magic of
+              possibilities. </p>
+            <a href="https://kinokrad.us/fulms_usa/9378-drakon-zhelaniy-wish-dragon-2021.html"
+              class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+
+
+        <div class="card" style="width: 18rem;" data-year="2022" data-popularity="2">
+          <img height="400" width="auto"
+            src="https://kinokrad.us/uploads/posts/2022-07/1657517877-tor-lyubov-i-grom.jpg" class="card-img-top"
+            alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Thor </h5>
+            <p class="card-text">Thor is a very tall and well-built Asgardian male; he has very large biceps and long,
+              muscular legs. Fair-skinned and blue-eyed, he has golden blond hair that grows slightly during the events
+              of the Marvel Cinematic Universe, reaching just around his shoulders by Thor: The Dark World. </p>
+            <a href="https://kinokrad.us/trailer/11427-tor-lyubov-i-grom-thor-love-and-thunder-2022.html"
+              class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+
+
+        <div class="card" style="width: 18rem;" data-year="2022" data-popularity="1">
+          <img height="400" width="auto"
+            src="https://kinokrad.us/uploads/posts/2022-06/1655615670-etim-letom-ya-stala-krasivoy.jpg"
+            class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">The summer i turned pretty </h5>
+            <p class="card-text">The Summer I Turned Pretty tells the story of fifteen-year-old Belly and her eventful
+              summer vacation at Cousins Beach, where she hopes to fall in love. The series focuses on her romantic
+              endeavors as she finds herself in a love triangle with two brothers, Jeremiah and Conrad. </p>
+            <a href="https://kinokrad.us/serialy/11874-etim-letom-ya-stala-krasivoy-the-summer-i-turned-pretty-2022.html"
+              class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+
+
+        <div class="card" style="width: 18rem;" data-year="2021" data-popularity="9">
+          <img height="400" width="auto"
+            src="https://kinokrad.us/uploads/posts/2021-11/1636919922-bolshoy-krasnyy-pes-klifford.jpg"
+            class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">The big red dog </h5>
+            <p class="card-text">TA young girl's love for a tiny puppy named Clifford makes the dog grow to an enormous
+              size. As middle schooler Emily Elizabeth struggles to fit in at home and at school, she discovers a small
+              red puppy who is destined to become her best friend from a magical animal rescuer. </p>
+            <a href="https://kinokrad.us/fulms_usa/10569-bolshoy-krasnyy-pes-klifford-clifford-the-big-red-dog-2021.html"
+              class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+
+
+        <div class="card" style="width: 18rem;" data-year="2017" data-popularity="1">
+          <img height="400" width="auto"
+            src="https://kinokrad.us/uploads/posts/2022-01/1642765063-monstry-na-kanikulah-transformaniya.jpg"
+            class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Hotel transylvania </h5>
+            <p class="card-text">Dracula, who operates a high-end resort away from the human world, goes into
+              overprotective mode when a boy discovers the resort and falls for the count's teenaged daughter. In 1895,
+              Dracula builds a resort in Transylvania, hidden from the humans, to raise his beloved daughter Mavis in a
+              safe environment. </p>
+            <a href="https://kinokrad.us/fulms_usa/11028-monstry-na-kanikulah-transformaniya-hotel-transylvania-transformania-2022.html"
+              class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+
+
+        <div class="card" style="width: 18rem;" data-year="2022" data-popularity="2">
+          <img height="400" width="auto" src="https://kinokrad.us/uploads/posts/2022-08/1660759868-purpurnye-serdca.jpg"
+            class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">purple hearts </h5>
+            <p class="card-text">Purple Hearts plays out like a conservative fanfiction. While the film may attempt to
+              portray a romance between two persons from the opposite ends of the political spectrum, its insistence to
+              locate all its sympathies with the U.S. military overshadows everything else </p>
+            <a href="https://kinokrad.us/movie/12294-purpurnye-serdca-purple-hearts-2022.html"
+              class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+
+        <div class="card" style="width: 18rem;" data-year="2008" data-popularity="2">
+          <img height="400" width="auto" src="https://kinokrad.us/uploads/posts/2019-09/1569756617-madagaskar-2.jpg"
+            class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">madagaskar 2 </h5>
+            <p class="card-text">The Madagascar animals fly back to New York City, but crash-land on an African nature
+              reserve, where they meet others of their own kind, and Alex especially discovers his royal heritage as
+              prince of a lion pride. </p>
+            <a href="https://kinokrad.us/fulms_usa/7195-madagaskar-2-madagascar-escape-2-africa-2008.html"
+              class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+
+        <div class="card" style="width: 18rem;" data-year="2022" data-popularity="4">
+          <img height="400" width="auto"
+            src="https://kinokrad.us/uploads/posts/2022-08/1661672823-vremya-dlya-sebya.jpg" class="card-img-top"
+            alt="...">
+          <div class="card-body">
+            <h5 class="card-title">me time</h5>
+            <p class="card-text">Sonny, a stay-at-home dad, finds himself with some "me time" for the first time in
+              years while his wife and kids are away. He reconnects with his former best friend Huck for a wild weekend
+              that nearly upends his life. </p>
+            <a href="https://kinokrad.us/movie/12371-vremya-dlya-sebya-me-time-2022.html" class="btn btn-primary">Go
+              somewhere</a>
+          </div>
+        </div>
+
+        <div class="card" style="width: 18rem;" data-year="2021" data-popularity="6">
+          <img height="400" width="auto"
+            src="https://kinokrad.us/uploads/posts/2021-09/1630934912-shan-chi-i-legenda-desyati-kolec.jpg"
+            class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">schang chi </h5>
+            <p class="card-text"> schang chi is an American television docuseries created for the streaming service
+              Disney+, based on the Marvel Comics characters and objects that appear in the Marvel Cinematic Universe
+              (MCU).</p>
+            <a href="https://kinokrad.us/serialy/11595-marvel-studios-legendy-marvel-studios-legends-2021.html"
+              class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+
+        <div class="card" style="width: 18rem;" data-year="2022" data-popularity="3">
+          <img height="400" width="auto" src="https://kinokrad.us/uploads/posts/2022-08/1660495407-ya-est-grut.jpg"
+            class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title"> i am groot </h5>
+            <p class="card-text">Groot is an extraterrestrial tree monster who initially came to Earth seeking humans to
+              capture and study. Groot was seemingly destroyed by termites used by Leslie Evans. Xemnu made a duplicate
+              of Groot by making a human and tree hybrid that was used to fight the Hulk, but it was destroyed in the
+              battle. </p>
+            <a href="https://kinokrad.us/fulms_usa/12271-ya-est-grut-i-am-groot-2022.html" class="btn btn-primary">Go
+              somewhere</a>
+          </div>
+        </div>
+
+        <div class="card" style="width: 18rem;" data-year="2016" data-popularity="7">
+          <img height="400" width="auto"
+            src="https://kinokrad.us/uploads/posts/2019-08/1565095442-taynaya-zhizn-domashnih-zhivotnyh.jpg"
+            class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Pets </h5>
+            <p class="card-text">
+              The quiet life of a domestic terrier turns upside down after his owner brings home a large, bumbling mutt.
+              The two dogs then get lost in Manhattan and must join forces against a gang of abandoned pets while their
+              friends set out through the city to rescue them.. </p>
+            <a href="https://kinokrad.us/movie/821-taynaya-zhizn-domashnih-zhivotnyh.html" class="btn btn-primary">Go
+              somewhere</a>
+          </div>
+        </div>
+
+        <div class="card" style="width: 18rem;" data-year="2013" data-popularity="5">
+          <img height="400" width="auto" src="https://kinokrad.us/uploads/posts/2020-08/1597835851-holodnoe-serdce.jpg"
+            class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Frozen </h5>
+            <p class="card-text">Fearless optimist Anna teams up with rugged mountain man Kristoff and his loyal
+              reindeer Sven and sets off on an epic journey to find her sister Elsa, whose icy powers have trapped the
+              kingdom of Arendelle in eternal winter. </p>
+            <a href="https://kinokrad.us/xfsearch-2013/2365-holodnoe-serdce.html" class="btn btn-primary">Go
+              somewhere</a>
+          </div>
+        </div>
+
+        <div class="card" style="width: 18rem;" data-year="2014" data-popularity="10">
+          <img height="400" width="auto" src="https://kinokrad.us/uploads/posts/2021-02/1612935585-flesh.jpg"
+            class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">The flash </h5>
+            <p class="card-text">Dracula, who operates a high-end resort away from the human world, goes into
+              overprotective mode when a boy discovers the resort and falls for the count's teenaged daughter. In 1895,
+              Dracula builds a resort in Transylvania, hidden from the humans, to raise his beloved daughter Mavis in a
+              safe environment. </p>
+            <a href="https://kinokrad.us/serialy/6047-flesh.html" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+
+        <div class="card" style="width: 18rem;" data-year="2001" data-popularity="3">
+          <img height="400" width="auto"
+            src="https://kinokrad.us/uploads/posts/2019-10/1572423979-garri-potter-i-filosofskiy-kamen.jpg"
+            class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Harry potter </h5>
+            <p class="card-text">The story begins when 11-year-old orphan Harry discovers that his parents were wizards
+              and he starts his education in magic at Hogwart's School of Witchcraft and Wizardry. There he makes two
+              close friends, Ron and Hermione, who share his adventure Each film ends dramatically, often with a battle
+              between Harry and his worst enemy, the evil wizard Lord Voldemort. </p>
+            <a href="https://kinokrad.us/movie/7318-garri-potter-i-filosofskiy-kamen-harry-potter-and-the-sorcerers-stone-2001.html"
+              class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+
+        <div class="card" style="width: 18rem;" data-year="2018" data-popularity="6">
+          <img height="400" width="auto"
+            src="https://kinokrad.us/uploads/posts/2021-05/1622279730-ralf-protiv-interneta.jpg" class="card-img-top"
+            alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Ralph breaks the internet </h5>
+            <p class="card-text">Six years after the events of "Wreck-It Ralph," Ralph and Vanellope, now friends,
+              discover a wi-fi router in their arcade, leading them into a new adventure. Six years after the events of
+              "Wreck-It Ralph," Ralph and Vanellope, now friends, discover a wi-fi router in their arcade, leading them
+              into a new adventure. </p>
+            <a href="https://kinokrad.us/movie/117-ralph-breaks-the-internet-wreck-it-ralph-2.html"
+              class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+
+        <div class="card" style="width: 18rem;" data-year="2008" data-popularity="6">
+          <img height="400" width="auto"
+            src="https://kinokrad.us/uploads/posts/2022-01/1641544111-sezon-ohoty-4-strashno-glupo.jpg"
+            class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title"> Midnight Bun Run </h5>
+            <p class="card-text">Based on the movie Open Season, Boog and Elliot try to raid campers of their
+              fresh-baked buns. Based on the movie Open Season, Boog and Elliot try to raid campers of their fresh-baked
+              buns. Based on the movie Open Season, Boog and Elliot try to raid campers of their fresh-baked buns.</p>
+            <a href="https://kinokrad.us/movie/751-sezon-ohoty-bayki-iz-lesa.html" class="btn btn-primary">Go
+              somewhere</a>
+          </div>
+        </div>
+
+
+        <div class="card" style="width: 18rem;" data-year="2022" data-popularity="6">
+          <img height="400" width="auto" src="https://kinokrad.us/uploads/posts/2022-07/1658251303-bazz-layter.jpg"
+            class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title"> lightyear </h5>
+            <p class="card-text">Light-year is the distance light travels in one year. Light zips through interstellar
+              space at 186,000 miles (300,000 kilometers) per second and 5.88 trillion miles (9.46 trillion kilometers)
+              per year.</p>
+            <a href="https://kinokrad.us/fulms_usa/12098-bazz-layter-lightyear-2022.html" class="btn btn-primary">Go
+              somewhere</a>
+          </div>
+        </div>
+
+
+
+
+
+
+
+
+
+      </div>
+
+      <div class="btn-group">
+        <a href="#" id="back" class="btn btn-primary disabled" aria-current="page">Back</a>
+        <a href="#" id="next" class="btn btn-primary">Next</a>
+
+      </div>
+    </div>
+
+
+
+
+    <nav id="right">Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat nemo, voluptate deleniti assumenda
+      similique recusandae quae incidunt omnis fugit excepturi id hic inventore rerum enim voluptatem quia minima
+      numquam illo?</nav>
+
+
+  </section>
+
+  <footer>
+    <div class="footer-card"> contact: <p> <a
+          href="https://www.instagram.com/sem/campaign/emailsignup/?campaign_id=13560899670&extra_1=s%7Cc%7C547348927123%7Ce%7Cinstagram%20%27%7C&placement=&creative=547348927123&keyword=instagram%20%27&partner_id=googlesem&extra_2=campaignid%3D13560899670%26adgroupid%3D126262456694%26matchtype%3De%26network%3Dg%26source%3Dnotmobile%26search_or_content%3Ds%26device%3Dc%26devicemodel%3D%26adposition%3D%26target%3D%26targetid%3Dkwd-1321618851291%26loc_physical_ms%3D9043041%26loc_interest_ms%3D%26feeditemid%3D%26param1%3D%26param2%3D&gclid=CjwKCAjwquWVBhBrEiwAt1KmwgtLHzHzV5eoSpSLUSDRldWq7nGka20kBQ0NFK1yUxhRgxTiFOIC3hoCPkkQAvD_BwE"><abbr
+            title="follow to external website"> social media </abbr></a></p>
+    </div>
+    <div class="footer-card"> other language: <abbr title="language"> english, spanish, france </abbr></a></p>
+    </div>
+    <div class="footer-card">help: <abbr title="language"> number:17543996506, email: film.my@com.de </abbr></a></p>
+    </div>
+  </footer>
+
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+    crossorigin="anonymous"></script>
+  <script src="{{url_for('static',filename='index.js')}}"></script>
+</body>
+
+</html>
